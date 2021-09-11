@@ -22,17 +22,12 @@ public class GreetingsService {
     }
 
     public Optional<Greetings> save(Map<String, String> params) {
-        if (params == null) {
-            params = new HashMap<>();
-        }
-        Greetings greeting = new Greetings(params.get("greetingName"));
-        return Optional.of(greetingRepository.save(greeting));
+        if (params == null) params = new HashMap<>();
+        return Optional.of(greetingRepository.save(new Greetings(params.get("greetingName"))));
     }
 
     public Optional<Greetings> update(long id, String newContext) {
-        Optional<Greetings> greetingsOptional = greetingRepository.findById(id);
-        Greetings greetings;
-        greetings = greetingsOptional.orElseGet(() -> new Greetings(newContext));
+        Greetings greetings = greetingRepository.findById(id).orElseGet(() -> new Greetings(newContext));
         greetings.setContent(newContext);
         return Optional.of(greetingRepository.save(greetings));
     }
