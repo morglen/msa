@@ -5,11 +5,93 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
 
-    <changeSet id="createTable" author="palekseev" context="update" runInTransaction="false">
+    <changeSet id="createTableFood" author="palekseev" context="update" runInTransaction="false">
         <preConditions onFail="MARK_RAN">
-            <tableExists tableName="MSA"/>
+            <not>
+                <tableExists tableName="FOOD"/>
+            </not>
         </preConditions>
-        <createTable tableName="MSA">
+        <createTable tableName="FOOD">
+            <column name="ID" type="INTEGER">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR2">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PRICE" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="createTableDrink" author="palekseev" context="update" runInTransaction="false">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="DRINK"/>
+            </not>
+        </preConditions>
+        <createTable tableName="DRINK">
+            <column name="ID" type="INTEGER">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR2">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PRICE" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="createTableIce" author="palekseev" context="update" runInTransaction="false">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="ICE"/>
+            </not>
+        </preConditions>
+        <createTable tableName="ICE">
+            <column name="ID" type="INTEGER">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR2">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PRICE" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="createTableAlc" author="palekseev" context="update" runInTransaction="false">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="ALC"/>
+            </not>
+        </preConditions>
+        <createTable tableName="ALC">
+            <column name="ID" type="INTEGER">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR2">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PRICE" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="createTableCigs" author="palekseev" context="update" runInTransaction="false">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="CIGS"/>
+            </not>
+        </preConditions>
+        <createTable tableName="CIGS">
+            <column name="ID" type="INTEGER">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR2">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PRICE" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="createTableAuto" author="palekseev" context="update" runInTransaction="false">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="AUTO"/>
+            </not>
+        </preConditions>
+        <createTable tableName="AUTO">
             <column name="ID" type="INTEGER">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
