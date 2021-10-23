@@ -2,6 +2,7 @@ package ru.diasoft.msa.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 import ru.diasoft.msa.domain.Food;
 import ru.diasoft.msa.repository.FoodRepository;
@@ -12,6 +13,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @Service
+@Transactional(timeout = 30, isolation = Isolation.SERIALIZABLE)
 public class FoodService {
 
     private final FoodRepository foodRepository;
