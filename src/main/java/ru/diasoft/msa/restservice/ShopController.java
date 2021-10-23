@@ -29,22 +29,22 @@ public class ShopController {
         return foodService.findAll();
     }
 
-    @GetMapping("/shop/{id}")
+    @GetMapping("/food/{id}")
     public Food getOne(@PathVariable Long id) {
         return foodService.findByID(id).get();
     }
 
-    @PostMapping("/shop")
+    @PostMapping("/food")
     public Food create(@RequestBody Map<String, String> params) {
         return foodService.save(params).get();
     }
 
-    @PutMapping("/shop/{id}")
+    @PutMapping("/food/{id}")
     public Food update(@RequestBody String newName, @PathVariable long id) {
         return foodService.update(id, newName).get();
     }
 
-    @DeleteMapping("/shop/{id}")
+    @DeleteMapping("/food/{id}")
     public void delete(@PathVariable long id) {
         foodService.delete(id);
     }
